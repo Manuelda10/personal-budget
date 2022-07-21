@@ -1,0 +1,16 @@
+.overview{
+    display: flex;
+    width: 82%;
+}
+
+.overview-info{
+    background-color: aqua;
+    width: 82%;
+    min-width: 20rem;
+}
+
+.overview-history{
+    background-color: red;
+    width: 22%;
+    min-width: 12rem;
+}

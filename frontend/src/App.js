@@ -1,9 +1,12 @@
 import './App.css';
+import Sidebar from './components/Sidebar/Sidebar';
+import Overview from './pages/Overview/Overview';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello world!</h1>
+    <div className="app">
+      <Sidebar></Sidebar>
+      <Overview></Overview>
     </div>
   );
 }
