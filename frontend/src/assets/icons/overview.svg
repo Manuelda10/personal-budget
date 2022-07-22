@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlnsDc="http://purl.org/dc/elements/1.1/"
-   xmlnsCc="http://creativecommons.org/ns#"
-   xmlnsRdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlnsSvg="http://www.w3.org/2000/svg"
+   xmlnsdc="http://purl.org/dc/elements/1.1/"
+   xmlnscc="http://creativecommons.org/ns#"
+   xmlnsrdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlnssvg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlnsSodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlnsInkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlnssodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlnsinkscape="http://www.inkscape.org/namespaces/inkscape"
    width="448"
    height="448"
    viewBox="0 0 448 448"
    id="svg2"
    version="1.1"
-   inkscapeVersion="0.91 r13725"
-   sodipodiDocname="dashboard.svg">
+   inkscapeversion="0.91 r13725"
+   sodipodidocname="dashboard.svg">
   <title
      id="title3342">dashboard</title>
   <defs
@@ -23,26 +23,26 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscapePageopacity="0.0"
-     inkscapePageshadow="2"
-     inkscapeZoom="0.98994949"
-     inkscapeCx="415.72893"
-     inkscapeCy="228.50386"
-     inkscapeDocument-units="px"
-     inkscapeCurrent-layer="layer1"
+     inkscapepageopacity="0.0"
+     inkscapepageshadow="2"
+     inkscapezoom="0.98994949"
+     inkscapecx="415.72893"
+     inkscapecy="228.50386"
+     inkscapedocument-units="px"
+     inkscapecurrent-layer="layer1"
      showgrid="true"
      fit-margin-top="448"
      fit-margin-right="384"
      fit-margin-left="0"
      fit-margin-bottom="0"
      units="px"
-     inkscapeWindow-width="1196"
-     inkscapeWindow-height="852"
-     inkscapeWindow-x="1102"
-     inkscapeWindow-y="413"
-     inkscapeWindow-maximized="0"
-     inkscapeSnap-bbox="true"
-     inkscapeBox-nodes="true">
+     inkscapewindow-width="1196"
+     inkscapewindow-height="852"
+     inkscapewindow-x="1102"
+     inkscapewindow-y="413"
+     inkscapewindow-maximized="0"
+     inkscapewnap-bbox="true"
+     inkscapebox-nodes="true">
     <inkscapeGrid
        type="xygrid"
        id="grid3347"
@@ -56,17 +56,17 @@
      id="metadata7">
     <rdfRDF>
       <ccWork
-         rdfAbout="">
+         rdfabout="">
         <dcFormat>image/svg+xml</dcFormat>
         <dcType
-           rdfResource="http://purl.org/dc/dcmitype/StillImage" />
+           rdfresource="http://purl.org/dc/dcmitype/StillImage" />
         <dcTitle>dashboard</dcTitle>
       </ccWork>
     </rdfRDF>
   </metadata>
   <g
-     inkscapeLabel="Layer 1"
-     inkscapeGroupmode="layer"
+     inkscapelabel="Layer 1"
+     inkscapegroupmode="layer"
      id="layer1"
      transform="translate(0,-604.36224)">
     <rect

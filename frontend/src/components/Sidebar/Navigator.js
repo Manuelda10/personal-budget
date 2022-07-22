@@ -12,7 +12,8 @@ const Navigator = () => {
             <ul>
                 <li></li>
                 <li><a href="#" >
-                    <div className='navlink-div' ><OverviewIcon className='navlink-icon'></OverviewIcon>Overview</div>
+                    <div className='navlink-div' >
+                        <OverviewIcon className='navlink-icon'></OverviewIcon>Overview</div>
                 </a></li>
                 <li><a href="#" >
                     <div className='navlink-div'>

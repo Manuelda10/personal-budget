@@ -1,0 +1,71 @@
+
+.activity-container{
+    background-color: aliceblue;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+.activity-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    background-color: aqua;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.icon-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    background-color: brown;
+
+}
+
+.info-container{
+    width: calc(70% - 1rem);
+    box-sizing: border-box;
+    padding-inline: 3px;
+}
+
+.item-concept{
+    color: black;
+    font-weight: 600;
+}
+
+.item-amount{
+    font-weight: 600;
+    color: var(--green);
+}
+
+.item-amount.expense{
+    color: var(--red);
+}
+
+.item-date, .item-exchange{
+    color: grey;
+}
+
+.amount-container{
+    width: calc(30% - 1rem);
+    background-color: crimson;
+    box-sizing: border-box;
+    padding-inline: 3px;
+}
+
+.circle-div{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--green);
+}
+
+.circle-div.expense{
+    background-color: var(--red);
+}
+
+
