@@ -5,9 +5,18 @@ import './index.css'
 const Activity = () => {
     return (
         <div className='activity-container' >
-            <Item income={true}></Item>
-            <Item income={true}></Item>
-            <Item income={false}></Item>
+            <div className='items-container'>
+                <Item income={true}></Item>
+                <Item income={true}></Item>
+                <Item income={false}></Item>
+                <Item income={false}></Item>
+                <Item income={false}></Item>
+                <Item income={false}></Item>
+                <Item income={true}></Item>
+                <Item income={true}></Item>
+                <Item income={true}></Item>
+                <Item income={true}></Item>
+            </div>  
         </div>
     )
 }

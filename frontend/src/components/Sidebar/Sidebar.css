@@ -1,5 +1,5 @@
 .sidebar{
-    width: 18%;
+    width: 15rem;
     min-width: 10rem;
     height: 100vh;
     background-color: var(--primary-color);
@@ -7,6 +7,10 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
 }
 
 .balance{
@@ -70,4 +74,32 @@
 
 .navigator ul li a :hover{
     opacity: 1;
+}
+
+
+
+
+
+@media screen and (max-width: 830px) {
+    .menu {
+        transform: translate(150vw, 150vh);
+        right: 0;
+        bottom: 1rem;
+        top: inherit;
+        left: inherit;
+        transition: ease 0.3s;
+        z-index: 3;
+        height: 18rem;
+        border-radius: 5px;
+    }
+
+    .navigator{
+        margin-top: 0.5rem;
+    }
+
+    .menu.is-active {
+        display: inherit;
+        ;
+        transform: translate(-2rem, 0);
+    }
 }

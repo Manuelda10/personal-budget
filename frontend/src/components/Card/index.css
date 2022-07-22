@@ -1,12 +1,23 @@
 .card{
     width: 100%;
-    background-color: white;
-    display: flex;
+    background-color: rgba(223, 223, 223, 0.3);
+    display: block;
     box-sizing: border-box;
     padding-inline: 0.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-radius: 5px;
+}
+
+.card-title{
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.card-content{
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .card-info-container{

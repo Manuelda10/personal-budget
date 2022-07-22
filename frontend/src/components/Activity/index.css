@@ -1,9 +1,13 @@
 
 .activity-container{
-    background-color: aliceblue;
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
+    overflow-y: scroll;
+}
+
+.activity-container h3{
+    text-align: center;
 }
 
 .activity-item{
@@ -12,7 +16,7 @@
     justify-content: space-around;
     margin-top: 0.5rem;
     font-size: 0.9rem;
-    background-color: aqua;
+
     box-sizing: border-box;
     width: 100%;
 }
@@ -22,7 +26,6 @@
     justify-content: center;
     align-items: center;
     width: 2rem;
-    background-color: brown;
 
 }
 
@@ -38,7 +41,7 @@
 }
 
 .item-amount{
-    font-weight: 600;
+    font-weight: 700;
     color: var(--green);
 }
 
@@ -52,7 +55,6 @@
 
 .amount-container{
     width: calc(30% - 1rem);
-    background-color: crimson;
     box-sizing: border-box;
     padding-inline: 3px;
 }
@@ -62,10 +64,29 @@
     height: 2rem;
     border-radius: 50%;
     background-color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .circle-div.expense{
     background-color: var(--red);
 }
+
+.icon-item{
+    width: 1.2rem;
+    fill: white;
+}
+
+@media screen and (max-width:625px) {
+    .activity-container {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        overflow-y: hidden;
+    }
+}
+
+
 
 

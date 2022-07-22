@@ -8,7 +8,7 @@ const Overview = () => {
     return (
         <div className='overview'>
             <div className='overview-info'>
-                <div className='overview-info-grid'>
+                <div className='overview-info-grid'>    
                     <div className='overview-chart'>
                         <p>Represento a un chart</p>
                     </div>
@@ -27,9 +27,9 @@ const Overview = () => {
                 </div>
             </div>
             <div className='overview-history'>
-                
+                <h3>User</h3>
                 <Profile></Profile>
-                <h3>Income and Expenses</h3>
+                <h3>Transactions</h3>
                 <Activity></Activity>
             </div>
         </div>

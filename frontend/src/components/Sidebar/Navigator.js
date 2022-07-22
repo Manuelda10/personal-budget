@@ -10,7 +10,6 @@ const Navigator = () => {
     return (
         <div className='navigator'>
             <ul>
-                <li></li>
                 <li><a href="#" >
                     <div className='navlink-div' >
                         <OverviewIcon className='navlink-icon'></OverviewIcon>Overview</div>

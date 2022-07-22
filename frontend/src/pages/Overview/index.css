@@ -1,11 +1,11 @@
 .overview{
     display: flex;
-    width: 82%;
+    width: calc(100% - 15rem);
+    margin-left: 15rem;
 }
 
 .overview-info{
-    background-color: aqua;
-    width: 72%;
+    width: calc(100% - 18rem);
     min-width: 20rem;
     display: flex;
     flex-direction: column;
@@ -14,18 +14,25 @@
 
 .overview-history {
     background-color: var(--melon);
-    width: 28%;
-    min-width: 12rem;
+    width: 18rem;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.overview-history h3:first-child{
+    display: none;
 }
 
 .overview-info-grid{
     width: 100%;
     display: grid;
     grid-auto-rows: 14rem;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
     place-items: center center;
 }
 
@@ -43,7 +50,33 @@
 }
 
 .overview-card-container{
-    background-color: blue;
     width: 75%;
 }
 
+@media screen and (max-width: 830px){
+    .overview{
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 625px){
+    .overview{
+        flex-wrap: wrap;
+    }
+
+    .overview-info {
+        width: 100%;
+    }
+
+    .overview-history{
+        width: 100%;
+        position: inherit;
+        height: inherit;
+        background-color: white;
+    }
+
+    .overview-history h3:first-child {
+        display: inherit;
+    }
+}
