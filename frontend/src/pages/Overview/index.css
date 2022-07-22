@@ -7,9 +7,43 @@
 .overview-info{
     width: calc(100% - 18rem);
     min-width: 20rem;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.overview-info-raw{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.overview-chart{
+    width: 45%;
+    min-width: 16rem;
+    height: 12rem;
+    background-color: red;
+    margin-bottom: 1rem;
+}
+
+.overview-chart-large{
+    background-color: red;
+    width: 80%;
+    display: flex;
+    height: 12rem;
+}
+
+.overview-card-container{
+    width: 45%;
+    min-width: 16rem;
+    margin-bottom: 1rem;
 }
 
 .overview-history {
@@ -24,33 +58,8 @@
     right: 0;
 }
 
-.overview-history h3:first-child{
+.overview-history h3:first-child {
     display: none;
-}
-
-.overview-info-grid{
-    width: 100%;
-    display: grid;
-    grid-auto-rows: 14rem;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    place-items: center center;
-}
-
-.overview-chart{
-    width: 80%;
-    height: 80%;
-    background-color: red;
-}
-
-.overview-chart-large{
-    background-color: red;
-    width: 80%;
-    display: flex;
-    height: 10rem;
-}
-
-.overview-card-container{
-    width: 75%;
 }
 
 @media screen and (max-width: 830px){

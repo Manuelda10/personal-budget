@@ -8,13 +8,15 @@ const Overview = () => {
     return (
         <div className='overview'>
             <div className='overview-info'>
-                <div className='overview-info-grid'>    
+                <div className='overview-info-raw'>
                     <div className='overview-chart'>
                         <p>Represento a un chart</p>
                     </div>
                     <div className='overview-chart'>
                         <p>Represento a un chart</p>
                     </div>
+                </div>
+                <div className='overview-info-raw'>
                     <div className='overview-card-container'>
                         <Card income={true} ></Card>
                     </div>
@@ -22,8 +24,10 @@ const Overview = () => {
                         <Card income={false}></Card>
                     </div>
                 </div>
-                <div className='overview-chart-large'>
-                    <p>Represento al chart más grand0 t más grande t más grande t más grande t más grandee</p>
+                <div className='overview-info-raw'>
+                    <div className='overview-chart-large'>
+                        <p>Represento al chart más grand0 t más grande t más grande t más grande t más grandee</p>
+                    </div>
                 </div>
             </div>
             <div className='overview-history'>
