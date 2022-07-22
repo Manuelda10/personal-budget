@@ -1,5 +1,6 @@
 import React from 'react'
 import Activity from '../../components/Activity/Activity'
+import Profile from '../../components/Profile/Profile'
 import Card from '../../components/Card/Card'
 import './index.css'
 
@@ -26,6 +27,8 @@ const Overview = () => {
                 </div>
             </div>
             <div className='overview-history'>
+                
+                <Profile></Profile>
                 <h3>Income and Expenses</h3>
                 <Activity></Activity>
             </div>
