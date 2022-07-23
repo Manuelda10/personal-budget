@@ -16,7 +16,7 @@ const Navigator = () => {
                 </a></li>
                 <li><a href="#" >
                     <div className='navlink-div'>
-                        <EditIcon className='navlink-icon'></EditIcon>My Operations
+                        <EditIcon className='navlink-icon'></EditIcon>Trnasactions
                     </div>
                 </a></li>
                 <li><a href="#">

@@ -1,0 +1,35 @@
+.transaction{
+    display: flex;
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--red);
+    box-sizing: border-box;
+    padding: 5px;
+}  
+
+
+.transaction.income{
+    background-color: var(--green);
+}
+
+.transaction-info{
+    width: 70%;
+}
+
+.transaction-info h4{
+    margin: 0;
+}
+
+.transaction-manage{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.transaction-btns-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
