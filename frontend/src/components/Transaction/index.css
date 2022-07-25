@@ -2,15 +2,11 @@
     display: flex;
     width: 100%;
     border-radius: 5px;
-    background-color: var(--red);
+    background-color: white;
+    box-shadow: 2px 2px 2px grey;
     box-sizing: border-box;
     padding: 5px;
 }  
-
-
-.transaction.income{
-    background-color: var(--green);
-}
 
 .transaction-info{
     width: 70%;
@@ -18,6 +14,21 @@
 
 .transaction-info h4{
     margin: 0;
+    color: var(--primary-strong);
+}
+
+.transaction-amount{
+    color: var(--red);
+    font-weight: 600;
+}
+
+.transaction-amount.income{
+    color: var(--green);
+}
+
+.transaction-date{
+    color: grey;
+    font-weight: 600;
 }
 
 .transaction-manage{
@@ -32,4 +43,25 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+.transaction-btns-container button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border: 1px solid re;
+}
+
+.transaction-btns-container button:hover .icon-transaction{
+    fill: red;
+}
+
+.transaction-btns-container button:hover .icon-transaction.income {
+    fill: black;
+}
+
+.icon-transaction{
+    transition: 0.2s;
+    width: 1.4rem;
+    fill: var(--primary-strong);
 }

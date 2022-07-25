@@ -1,5 +1,6 @@
 import React from 'react'
 import Transaction from '../../components/Transaction/Transaction'
+import { ReactComponent as IconAdd } from '../../assets/icons/add.svg'
 import './index.css' 
 
 const TransactionsPage = () => {
@@ -10,27 +11,31 @@ const TransactionsPage = () => {
             </div>
             
             <div className='transactions-page-menu'>
-                <button>New Operation</button>
+                <button>New Operation <IconAdd className='icon-menu'></IconAdd></button>
 
-                <label>
-                    Filter by type: 
-                </label>
-                <select name='type' id='type-select'>
-                    <option value={''}>Income</option>
-                    <option value={''}>Expenses</option>
-                </select>
+                <div className='filter-container'>
+                    <label>
+                        Filter by type: 
+                    </label>
+                    <select name='type' id='type-select'>
+                        <option value={''}>Income</option>
+                        <option value={''}>Expenses</option>
+                    </select>
+                </div>
 
-                <label>
-                    Filter by category: 
-                </label>
-                <select name='category' id='category-select'>
-                    <option value={''}>Category 1</option>
-                    <option value={''}>Category 2</option>
-                    <option value={''}>Category 3</option>
-                    <option value={''}>Category 4</option>
-                    <option value={''}>Category 5</option>
-                    <option value={''}>Category 6</option>
-                </select>
+                <div className='filter-container'>
+                    <label>
+                        Filter by category: 
+                    </label>
+                    <select name='category' id='category-select'>
+                        <option value={''}>Category 1</option>
+                        <option value={''}>Category 2</option>
+                        <option value={''}>Category 3</option>
+                        <option value={''}>Category 4</option>
+                        <option value={''}>Category 5</option>
+                        <option value={''}>Category 6</option>
+                    </select>
+                </div>
             </div>
 
             <div className='transactions-page-content'>
@@ -41,7 +46,6 @@ const TransactionsPage = () => {
                 <Transaction income={false} ></Transaction>
                 <Transaction income={true} ></Transaction>
                 <Transaction income={false} ></Transaction>
-
             </div>
         </div>
     )
