@@ -13,7 +13,7 @@ const Transaction = ({ income }) => {
         <div className='transaction-manage'>
             <p>Category</p>
             <div className='transaction-btns-container' >
-                <button><IconEdit className={`icon-transaction ${income ? 'income' : ''}`}></IconEdit></button>
+                <button><IconEdit className='icon-transaction edit'></IconEdit></button>
                 <button><IconDelete className='icon-transaction'></IconDelete></button>
             </div>         
         </div>

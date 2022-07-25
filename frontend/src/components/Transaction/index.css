@@ -53,10 +53,10 @@
 }
 
 .transaction-btns-container button:hover .icon-transaction{
-    fill: red;
+    fill: #c50303;
 }
 
-.transaction-btns-container button:hover .icon-transaction.income {
+.transaction-btns-container button:hover .icon-transaction.edit {
     fill: black;
 }
 

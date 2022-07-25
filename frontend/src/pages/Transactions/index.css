@@ -8,6 +8,7 @@
 
 .transactions-page-title{
     width: 90%;
+    color: var(--primary-strong);
 }
 
 .transactions-page-menu{
@@ -22,13 +23,15 @@
 }
 
 .transactions-page-menu button{
-    border: 1px;
-    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    background-color: white;
     cursor: pointer;
     box-sizing: border-box;
     color: var(--primary-color);
     font-weight: 600; 
-    transition: 0.2s;
+    transition: 0.3s;
+    padding: 4px;
+    border-radius: 2px;
 }
 
 .icon-menu {
@@ -43,16 +46,26 @@
 
 .transactions-page-menu button:hover{
     color: var(--primary-strong);
+    border-color: var(--primary-strong);
 }
 
 
 .filter-container label{
     margin-right: 0.2rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .filter-container select{
     padding: 2px;
+    outline: none;
+    border: 1px solid var(--primary-color);
+    border-radius: 2px;
+    color: var(--primary-strong);
 }
+
+
 
 .transactions-page-content{
     width: 90%;
