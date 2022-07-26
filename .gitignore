@@ -25,3 +25,4 @@ frontend/yarn-debug.log*
 frontend/yarn-error.log*
 
 # BACKEND
+backend/node_modules
