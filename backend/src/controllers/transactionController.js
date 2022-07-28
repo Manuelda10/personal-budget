@@ -1,4 +1,4 @@
-const {Transaction} = require('../models/association')
+const { Transaction } = require("../models/association")
 
 //GET
 const getAllTransactions = async (req, res) => {
@@ -25,7 +25,78 @@ const getOneTransaction = async (req, res) => {
     }
 }
 
+//POST
+const postOneTransaction = async (req, res) => {
+    const { concept, amount, date, idCategory, idType } = req.body
+    
+    if (!concept) {
+        return res.status(400).send({
+            message: 'Concept can not be empty'
+        })
+    }
+
+    const transaction = {
+        concept,
+        amount,
+        date,
+        idCategory,
+        idType
+    }
+
+    try {
+        const savedTransaction = await Transaction.create(transaction)
+        res.status(201).json(savedTransaction)
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || 'An error ocurred while creating the transaction'
+        })
+    }
+}
+
+//PUT
+const updateTransaction = async (req, res) => {
+    const id = req.params.id
+    const { concept, amount, date, idCategory } = req.body
+    try {
+        const updatedTransaction = await Transaction.update({ concept, amount, date, idCategory }, {
+            where: {id: id}
+        })
+    } catch (err) {
+        res.status(500).send({
+            message: `Error updating Transaction with id ${id}`
+        })
+    }
+}
+
+//DELETE
+const deleteTransaction = async (req, res) => {
+    const id = req.params.id
+
+    try {
+        const deletedTransaction = await Transaction.destroy({
+            where: {id:id}
+        })
+
+        if (deletedTransaction == 1) {
+            res.send({
+                message: 'Transaction was deleted successfully'
+            })
+        } else {
+            res.send({
+                message: `Can not delete Transaction with id: ${id}. Maybe was not found`
+            })
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: `Could not delete Transaction with id: ${id}`
+        })
+    }
+}
+
 module.exports = {
     getAllTransactions,
-    getOneTransaction
+    getOneTransaction,
+    postOneTransaction,
+    updateTransaction,
+    deleteTransaction
 }

@@ -1,5 +1,4 @@
-const Type = require("../models/type")
-const Transaction = require("../models/transaction")
+const { Type, Transaction, Category } = require("../models/association")
 
 //GET
 const getAllTypes = async (req, res) => {
@@ -38,6 +37,7 @@ const getTransactionsByType = async (req, res) => {
     }
 }
 
+//GET
 const getCategoriesByType = async (req, res) => {
     const idType = req.params.id
     try {
@@ -50,9 +50,60 @@ const getCategoriesByType = async (req, res) => {
     }
 }
 
+//POST
+const postOneType = async (req, res) => {
+    const { name } = req.body
+    
+    if (!name) {
+        return res.status(400).send({
+            message: 'Name of a type can not be empty'
+        })
+    }
+
+    const type = {
+        name: name
+    }
+
+    try {
+        const savedType = await Type.create(type)
+        res.status(201).json(savedType)
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || 'An error ocurred while creating the type'
+        })
+    }
+}
+
+//DELETE
+const deleteType = (req, res) => {
+    const id = req.params.id
+
+    try {
+        const deletedType = Type.destroy({
+            where: {id: id}
+        })
+
+        if (deletedType == 1) {
+            res.send({
+                message: 'Type was deleted successfully'
+            })
+        } else {
+            res.send({
+                message: `Can not delete Type with id: ${id}. Maybe was not found`
+            })
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: `Could not delete Type with id: ${id}`
+        })
+    }
+}
+
 module.exports = {
     getAllTypes,
     getOneType,
     getTransactionsByType,
-    getCategoriesByType
+    getCategoriesByType,
+    postOneType,
+    deleteType
 }
