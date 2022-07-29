@@ -1,9 +1,25 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Transaction from '../../components/Transaction/Transaction'
 import { ReactComponent as IconAdd } from '../../assets/icons/add.svg'
+
+import getTransactions from '../../services/transaction/getTransactions'
 import './index.css' 
 
 const TransactionsPage = () => {
+
+    const [transactions, setTransactions] = useState([])
+    const [categories, setCategories] = useState([])
+    const [types, setTypes] = useState([])
+
+    const handleGetTransactions = () => {
+        getTransactions().then(data => setTransactions(data))
+    }
+
+    useEffect(() => {
+        handleGetTransactions()
+    },[])
+
+
     return (
         <div className='transactions-page' >
             <div className='transactions-page-title' >
@@ -39,13 +55,22 @@ const TransactionsPage = () => {
             </div>
 
             <div className='transactions-page-content'>
-                <Transaction income={true} ></Transaction>
-                <Transaction income={true} ></Transaction>
-                <Transaction income={false} ></Transaction>
-                <Transaction income={true} ></Transaction>
-                <Transaction income={false} ></Transaction>
-                <Transaction income={true} ></Transaction>
-                <Transaction income={false} ></Transaction>
+                {
+                    transactions.map(transaction => {
+                        return (
+                            <Transaction
+                                key = {transaction.id}
+                                id ={ transaction.id}
+                                concept={transaction.concept}
+                                amount={transaction.amount}
+                                date={transaction.date}
+                                categoryId={transaction.categoryId}
+                                typeId = {transaction.typeId}
+                            > </Transaction>
+                        )
+                    })
+                }
+
             </div>
         </div>
     )
