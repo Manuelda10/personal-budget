@@ -27,7 +27,7 @@ const getOneTransaction = async (req, res) => {
 
 //POST
 const postOneTransaction = async (req, res) => {
-    const { concept, amount, date, idCategory, idType } = req.body
+    const { concept, amount, date, categoryId, typeId } = req.body
     
     if (!concept) {
         return res.status(400).send({
@@ -39,8 +39,8 @@ const postOneTransaction = async (req, res) => {
         concept,
         amount,
         date,
-        idCategory,
-        idType
+        categoryId,
+        typeId
     }
 
     try {
@@ -56,11 +56,12 @@ const postOneTransaction = async (req, res) => {
 //PUT
 const updateTransaction = async (req, res) => {
     const id = req.params.id
-    const { concept, amount, date, idCategory } = req.body
+    const { concept, amount, date, categoryId } = req.body
     try {
-        const updatedTransaction = await Transaction.update({ concept, amount, date, idCategory }, {
+        const updatedTransaction = await Transaction.update({ concept, amount, date, categoryId }, {
             where: {id: id}
         })
+        res.send(updatedTransaction)
     } catch (err) {
         res.status(500).send({
             message: `Error updating Transaction with id ${id}`

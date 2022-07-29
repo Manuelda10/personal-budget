@@ -17,6 +17,7 @@ const getOneType = async (req, res) => {
     const id = req.params.id
     try {
         const type = await Type.findByPk(id)
+        res.send(type)
     } catch (err) {
         res.status(500).send({
             message: `Error while retrieving Transaction with id: ${id}`
@@ -75,11 +76,11 @@ const postOneType = async (req, res) => {
 }
 
 //DELETE
-const deleteType = (req, res) => {
+const deleteType = async (req, res) => {
     const id = req.params.id
 
     try {
-        const deletedType = Type.destroy({
+        const deletedType = await Type.destroy({
             where: {id: id}
         })
 

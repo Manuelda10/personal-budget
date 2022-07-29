@@ -4,10 +4,10 @@ const typeController = require('../controllers/typeController')
 
 typesRouter
     .get('/', typeController.getAllTypes)
-    .get('/:typeId', typeController.getOneType)
-    .get('/transactions', typeController.getTransactionsByType)
-    .get('/categories', typeController.getCategoriesByType)
-    .post(':/id', typeController.postOneType)
+    .get('/:id', typeController.getOneType)
+    .get('/:id/transactions', typeController.getTransactionsByType)
+    .get('/:id/categories', typeController.getCategoriesByType)
+    .post('/', typeController.postOneType)
     .delete('/:id', typeController.deleteType)
 
 module.exports = typesRouter

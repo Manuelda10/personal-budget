@@ -1,4 +1,4 @@
-const { Type, Transaction, Category } = require("../models/association")
+const { Category } = require("../models/association")
 
 //GET
 const getAllCategories = async (req, res) => {
@@ -27,16 +27,17 @@ const getOneCategory = async (req, res) => {
 
 //POST
 const postOneCategory = async (req, res) => {
-    const { catName } = req.body
+    const { name, typeId } = req.body
     
-    if (!catName) {
+    if (!name) {
         return res.status(400).send({
             message: 'Category name can not be empty'
         })
     }
 
     const category = {
-        name: catName
+        name,
+        typeId
     }
 
     try {

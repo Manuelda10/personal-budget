@@ -12,9 +12,6 @@ const Transaction = sequelize.define('transaction', {
     date: {
         type: Sequelize.DATE,
         allowNull: false
-    },
-    income: {
-        type: Sequelize.BOOLEAN
     }
 }, {
     timestamps: false
