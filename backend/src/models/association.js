@@ -9,8 +9,7 @@ Type.hasMany(Transaction, {onDelete: 'CASCADE'})
 Transaction.belongsTo(Type, {onDelete: 'CASCADE'})
 
 Category.hasMany(Transaction, {onDelete: 'CASCADE'})
-Transaction.belongsTo(Category, {onDelete: 'CASCADE'})
-
+Transaction.belongsTo(Category, { onDelete: 'CASCADE' })
 
 module.exports = { Category, Transaction, Type }
 
