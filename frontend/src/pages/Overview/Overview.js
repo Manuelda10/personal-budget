@@ -4,11 +4,15 @@ import Profile from '../../components/Profile/Profile'
 import Card from '../../components/Card/Card'
 import roundNumber from '../../helpers/roundNumber'
 import './index.css'
+import Chart from '../../components/Chart/Chart'
+import getData from '../../helpers/getData'
 
 const Overview = ({ transactions }) => {
     
     let positiveAmount = 0
     let negativeAmount = 0
+    const data = getData(transactions, 4)
+    const dataLarge = getData(transactions, 6)
 
     transactions.forEach(transaction => {
         if (transaction.typeId === 1) {
@@ -23,10 +27,12 @@ const Overview = ({ transactions }) => {
             <div className='overview-info'>
                 <div className='overview-info-raw'>
                     <div className='overview-chart'>
-                        <p>Represento a un chart</p>
+                        <h3>Income Chart</h3>
+                        <Chart data={data} type='income' ></Chart>
                     </div>
                     <div className='overview-chart'>
-                        <p>Represento a un chart</p>
+                        <h3>Expenses Chart</h3>
+                        <Chart data={data} type='expenses' ></Chart>
                     </div>
                 </div>
                 <div className='overview-info-raw'>
@@ -39,7 +45,8 @@ const Overview = ({ transactions }) => {
                 </div>
                 <div className='overview-info-raw'>
                     <div className='overview-chart-large'>
-                        <p>Represento al chart más grand0 t más grande t más grande t más grande t más grandee</p>
+                        <h3>General</h3>
+                        <Chart data={dataLarge} type='all'></Chart>
                     </div>
                 </div>
             </div>

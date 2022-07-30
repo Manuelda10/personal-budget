@@ -23,7 +23,7 @@ function App() {
     <div className="app">
       <Sidebar transactions={transactions}></Sidebar>
       <Routes>
-        <Route path='/home' element={<Overview
+        <Route path='/' element={<Overview
           transactions={transactions} ></Overview>} ></Route>
         <Route path='/transactions' element={<TransactionsPage
           handleGetAllTransactions={handleGetAllTransactions} ></TransactionsPage>} ></Route>
