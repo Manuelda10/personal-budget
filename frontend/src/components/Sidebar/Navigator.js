@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as OverviewIcon } from '../../assets/icons/overview.svg'
 import { ReactComponent as EditIcon } from '../../assets/icons/edit.svg'
-import { ReactComponent as SettingsIcon } from '../../assets/icons/settings.svg'
 import './Sidebar.css'
 
 const Navigator = () => {
@@ -19,11 +18,15 @@ const Navigator = () => {
                         <EditIcon className='navlink-icon'></EditIcon>Transactions
                     </div>
                 </NavLink></li>
-                <li><a href="#">
+                {
+                    /*
+                    <li><a href="#">
                     <div className='navlink-div'>
                         <SettingsIcon className='navlink-icon'></SettingsIcon>Settings
                     </div>
-                </a></li>
+                </a></li>*/ 
+                }
+               
             </ul>            
         </div>
     )

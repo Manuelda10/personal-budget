@@ -62,7 +62,11 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
 
     return (
         <div className='transaction-update'>
-            <h2>Transaction Update</h2>
+            <h2>{
+                initialConcept === undefined ?
+                    'Transaction Create'
+                    : 'Transaction Update'
+            }</h2>
             <div className='transaction-update-row'>
                 <div className='concept-container'>
                     <label>Concept of payment: <br></br>
