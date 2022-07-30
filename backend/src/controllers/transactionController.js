@@ -48,7 +48,7 @@ const postOneTransaction = async (req, res) => {
         res.status(201).json(savedTransaction)
     } catch (err) {
         res.status(500).send({
-            message: err.message || 'An error ocurred while creating the transaction'
+            message: 'An error ocurred while creating the transaction'
         })
     }
 }

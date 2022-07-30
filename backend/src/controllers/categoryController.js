@@ -1,4 +1,4 @@
-const { Category } = require("../models/association")
+const { Category, Transaction } = require("../models/association")
 
 //GET
 const getAllCategories = async (req, res) => {
@@ -21,6 +21,20 @@ const getOneCategory = async (req, res) => {
     } catch (err) {
         res.status(500).send({
             message: `Error while retrieving Category with id: ${id}`
+        })
+    }
+}
+
+const getTransactionsByCategory = async (req, res) => {
+    const id = req.params.id
+    try {
+        const transactions = await Transaction.findAll({
+            where: {categoryId: id}
+        })
+        res.send(transactions)
+    } catch (err) {
+        res.status(500).send({
+            message: `Error while retrieving Transactions of Category with id: ${id}`
         })
     }
 }
@@ -80,6 +94,7 @@ const deleteCategory = async (req, res) => {
 module.exports = {
     getAllCategories,
     getOneCategory,
+    getTransactionsByCategory,
     postOneCategory,
     deleteCategory
 }

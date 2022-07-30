@@ -1,9 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useCallback} from 'react'
 import Transaction from '../../components/Transaction/Transaction'
-import { ReactComponent as IconAdd } from '../../assets/icons/add.svg'
 
 import getTransactions from '../../services/transaction/getTransactions'
 import './index.css' 
+import getCategories from '../../services/category/getCategories'
+import getTypes from '../../services/type/getTypes'
+import getCategoriesByType from '../../services/category/getCategoriesByType'
+import Menu from '../../components/Menu/Menu'
+import getTransactionsByType from '../../services/transaction/getTransactionsByType'
+import getTransactionsByCategory from '../../services/transaction/getTransactionsByCategory'
+import createTransaction from '../../services/transaction/createTransaction'
+import updateTransaction from '../../services/transaction/updateTransaction'
 
 const TransactionsPage = () => {
 
@@ -11,13 +18,51 @@ const TransactionsPage = () => {
     const [categories, setCategories] = useState([])
     const [types, setTypes] = useState([])
 
-    const handleGetTransactions = () => {
-        getTransactions().then(data => setTransactions(data))
+    const handleGetTransactions = useCallback((id, filter) => {
+        if (id === 'all' || id === undefined) {
+            getTransactions().then(data => setTransactions(data))
+        } else {
+            if (filter === 'category') {
+                handleGetTransactionsByCategory(id)
+            } else {
+                handleGetTransactionsByType(id)
+            }
+        }
+    },[])
+    
+    const handleGetTransactionsByType = (id) => {
+        getTransactionsByType(id).then(data => setTransactions(data))
+    }
+
+    const handleGetTransactionsByCategory = (id) => {
+        getTransactionsByCategory(id).then(data => setTransactions(data))
+    } 
+
+    const handleGetCategories = (id) => {
+        if (id !== undefined && id !== 'all') {
+            getCategoriesByType(id).then(data => setCategories(data))
+        } else {
+            getCategories().then(data => setCategories(data))
+        }
+    }
+
+    const handleGetTypes = () => {
+        getTypes().then(data => setTypes(data))
+    }
+
+    const handleCreateTransaction = (transaction) => {
+        createTransaction({transaction}).then(res => handleGetTransactions())
+    }
+
+    const handleUpdateTransaction = (id, transaction) => {
+        updateTransaction(id, {transaction}).then(res => handleGetTransactions())
     }
 
     useEffect(() => {
         handleGetTransactions()
-    },[])
+        handleGetCategories()
+        handleGetTypes()
+    },[handleGetTransactions])
 
 
     return (
@@ -26,33 +71,14 @@ const TransactionsPage = () => {
                 <h2>My Transactions</h2>
             </div>
             
-            <div className='transactions-page-menu'>
-                <button>New Operation <IconAdd className='icon-menu'></IconAdd></button>
-
-                <div className='filter-container'>
-                    <label>
-                        Filter by type: 
-                    </label>
-                    <select name='type' id='type-select'>
-                        <option value={''}>Income</option>
-                        <option value={''}>Expenses</option>
-                    </select>
-                </div>
-
-                <div className='filter-container'>
-                    <label>
-                        Filter by category: 
-                    </label>
-                    <select name='category' id='category-select'>
-                        <option value={''}>Category 1</option>
-                        <option value={''}>Category 2</option>
-                        <option value={''}>Category 3</option>
-                        <option value={''}>Category 4</option>
-                        <option value={''}>Category 5</option>
-                        <option value={''}>Category 6</option>
-                    </select>
-                </div>
-            </div>
+            <Menu
+                categories={categories}
+                types={types}
+                handleGetCategories={handleGetCategories}
+                handleGetTransactions={handleGetTransactions}
+                handleCreateTransaction={handleCreateTransaction}
+                handleUpdateTransaction={handleUpdateTransaction}
+                ></Menu>
 
             <div className='transactions-page-content'>
                 {
@@ -65,7 +91,8 @@ const TransactionsPage = () => {
                                 amount={transaction.amount}
                                 date={transaction.date}
                                 categoryId={transaction.categoryId}
-                                typeId = {transaction.typeId}
+                                typeId={transaction.typeId}
+                                handleUpdateTransaction={handleUpdateTransaction}
                             > </Transaction>
                         )
                     })

@@ -6,7 +6,7 @@ import './index.css'
 import { TransactionUpdate } from '../TransactionUpdate/TransactionUpdate'
 import getOneCategory from '../../services/category/getOneCategory'
 
-const Transaction = ({ id, concept, amount, date, categoryId, typeId}) => {
+const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleCreateTransaction, handleUpdateTransaction}) => {
 
     const [showModal, setShowModal] = useState(false);
     const [category, setCategory] = useState('')
@@ -32,7 +32,7 @@ const Transaction = ({ id, concept, amount, date, categoryId, typeId}) => {
             <h4>{concept}</h4>
             <p className={`transaction-amount ${typeId === 1 ? 'income' : ''}`} >
                 { typeId === 1 ? '+' : '-'
-                }{amount}
+                }{amount} USD
             </p>
             <p className='transaction-date'>{date}</p>
         </div>
@@ -48,9 +48,14 @@ const Transaction = ({ id, concept, amount, date, categoryId, typeId}) => {
             showModal
             && <Modal>
                     <TransactionUpdate
+                        id={id}
                         initialConcept={concept}
                         initialAmount={amount}
                         initialDate={date}
+                        initialTypeId={typeId}
+                        initialCategoryId={categoryId}
+                        handleCreateTransaction={handleCreateTransaction}
+                        handleUpdateTransaction={handleUpdateTransaction}
                         onClose={handleCloseModal} ></TransactionUpdate>
                 </Modal>
         }

@@ -5,16 +5,19 @@ import getCategoriesByType from '../../services/category/getCategoriesByType'
 import getTypes from '../../services/type/getTypes'
 import './index.css'
 
-const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, initialCategoryId, typeId, onClose }) => {
+const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, initialCategoryId, initialTypeId, handleCreateTransaction, handleUpdateTransaction, onClose }) => {
     
-    const [concept, setConcept] = useState(initialConcept)
-    const [amount, setAmount] = useState(initialAmount)
-    const [date, setDate] = useState(initialDate)
+    const [concept, setConcept] = useState(initialConcept || '')
+    const [amount, setAmount] = useState(initialAmount || '')
+    const [date, setDate] = useState(initialDate || '')
+    const [categoryId, setCategoryId] = useState(initialCategoryId || '')
+    const [typeId, setTypeId] = useState(initialTypeId || '')
+
+    //List of categories and types
     const [categories, setCategories] = useState([])
     const [types, setTypes] = useState([])
 
-    const handleCategories = (id) => {
-        console.log(id)
+    const handleGetCategories = (id) => {
         getCategoriesByType(id).then(cat => setCategories(cat))
     }
 
@@ -22,22 +25,28 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
         getTypes().then(type => setTypes(type))
     }
 
+    // Save the information of the transaction
     const handleSubmit = () => {
         const transactionUpdated = {
             concept,
             amount,
-            date
+            date,
+            categoryId,
+            typeId
         }
-        if (initialConcept !== undefined) {
-            console.log("Hago un update de la nota")
+
+        console.log(transactionUpdated)
+
+        if (initialConcept === undefined) {
+            handleCreateTransaction(transactionUpdated)
         } else {
-            console.log("Creo la nota")
+            handleUpdateTransaction(id, transactionUpdated)
         }
         onClose()
     }
 
     useEffect(() => {
-        handleCategories(typeId)
+        handleGetCategories(typeId)
         handleTypes()
     }, [typeId])
 
@@ -70,7 +79,7 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
                         className='input-date'
                         type='date'
                         value={date}
-                        onChange={e => setDate(e.target.date)}>
+                        onChange={e => setDate(e.target.value)}>
                     </input></label>
                 </div>
             </div>
@@ -78,7 +87,14 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
             <div className='transaction-update-row'>
                 <div className='transaction-update-col'>
                     <label>Type: </label><br></br>
-                    <select onChange={e => handleCategories(e.target.value)}>
+                    <select
+                        disabled={initialConcept === undefined ? false : true}
+                        onChange={e => {
+                            setTypeId(e.target.value)
+                            handleGetCategories(e.target.value)
+                        }}
+                        value={`${typeId}`}
+                    >
                         {
                             types.map(type => {
                                 return (
@@ -92,7 +108,9 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
 
                 <div className='transaction-update-col'>
                     <label>Category: </label><br></br>
-                    <select>
+                    <select
+                        onChange={e => setCategoryId(e.target.value)}
+                        value={`${categoryId}`}>
                         {
                             categories.map(cat => {
                                 return (
