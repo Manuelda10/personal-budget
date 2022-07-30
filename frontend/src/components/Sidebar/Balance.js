@@ -1,10 +1,10 @@
 import React from 'react'
 import './Sidebar.css'
 
-const Balance = () => {
+const Balance = ({total}) => {
     return (
         <div className='balance'>
-            <h1>$48,300</h1>
+            <h1>${total}</h1>
             <p>Current balance</p>
         </div>
     )

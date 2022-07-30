@@ -1,9 +1,10 @@
 import React from 'react'
 import { ReactComponent as IconCheck } from '../../assets/icons/check.svg'
-import {ReactComponent as XIcon} from '../../assets/icons/xicon.svg'
+import { ReactComponent as XIcon } from '../../assets/icons/xicon.svg'
+import roundNumber from '../../helpers/roundNumber'
 import './index.css'
 
-const Item = ({ income }) => {
+const Item = ({ income, concept, date, amount }) => {
     return (
         <div className='activity-item' >
             <div className='icon-container'>
@@ -17,11 +18,11 @@ const Item = ({ income }) => {
                 </div>
             </div>
             <div className='info-container'>
-                <p className='item-concept' >Título del depósito</p>
-                <p className='item-date'>Date of deposit</p>
+                <p className='item-concept' >{concept}</p>
+                <p className='item-date'>{date}</p>
             </div>
             <div className='amount-container'>
-                <p className={`item-amount ${income ? '':'expense'}`}>$200.25</p>
+                <p className={`item-amount ${income ? '':'expense'}`}>${roundNumber(amount)}</p>
                 <p className='item-exchange'>USD</p>
             </div>
         </div>

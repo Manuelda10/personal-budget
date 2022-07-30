@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { ReactComponent as IconEdit } from '../../assets/icons/update.svg'
-import { ReactComponent as IconDelete } from '../../assets/icons/delete.svg'
 import Modal from '../Modal/Modal'
-import './index.css'
 import { TransactionUpdate } from '../TransactionUpdate/TransactionUpdate'
 import getOneCategory from '../../services/category/getOneCategory'
+import { ReactComponent as IconEdit } from '../../assets/icons/update.svg'
+import { ReactComponent as IconDelete } from '../../assets/icons/delete.svg'
+import roundNumber from '../../helpers/roundNumber'
+import Swal from 'sweetalert2'
+import './index.css'
 
-const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleCreateTransaction, handleUpdateTransaction}) => {
+const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleUpdateTransaction, handleDeleteTransaction}) => {
 
     const [showModal, setShowModal] = useState(false);
     const [category, setCategory] = useState('')
@@ -23,6 +25,27 @@ const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleCrea
         getOneCategory(id).then(cat => setCategory(cat.name))
     }
 
+    const handleDelete = () => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You won't be able to revert the transaction '${concept}'`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                handleDeleteTransaction(id)
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } 
+        })
+    }
+
     useEffect(() => {
         handleGetCategory(categoryId)
     }, [categoryId])
@@ -32,7 +55,7 @@ const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleCrea
             <h4>{concept}</h4>
             <p className={`transaction-amount ${typeId === 1 ? 'income' : ''}`} >
                 { typeId === 1 ? '+' : '-'
-                }{amount} USD
+                }{roundNumber(amount)} USD
             </p>
             <p className='transaction-date'>{date}</p>
         </div>
@@ -41,7 +64,7 @@ const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleCrea
             <p className='transaction-category'>{category}</p>
             <div className='transaction-btns-container' >
                 <button onClick={handleOpenModal} ><IconEdit className='icon-transaction edit'></IconEdit></button>
-                <button><IconDelete className='icon-transaction'></IconDelete></button>
+                <button onClick={handleDelete} ><IconDelete className='icon-transaction'></IconDelete></button>
             </div>         
         </div>
         {
@@ -54,7 +77,6 @@ const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleCrea
                         initialDate={date}
                         initialTypeId={typeId}
                         initialCategoryId={categoryId}
-                        handleCreateTransaction={handleCreateTransaction}
                         handleUpdateTransaction={handleUpdateTransaction}
                         onClose={handleCloseModal} ></TransactionUpdate>
                 </Modal>

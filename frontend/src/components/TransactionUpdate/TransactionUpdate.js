@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {ReactComponent as CloseIcon} from '../../assets/icons/xicon.svg'
-import getCategories from '../../services/category/getCategories'
 import getCategoriesByType from '../../services/category/getCategoriesByType'
 import getTypes from '../../services/type/getTypes'
+import Swal from 'sweetalert2'
 import './index.css'
 
 const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, initialCategoryId, initialTypeId, handleCreateTransaction, handleUpdateTransaction, onClose }) => {
@@ -10,8 +10,8 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
     const [concept, setConcept] = useState(initialConcept || '')
     const [amount, setAmount] = useState(initialAmount || '')
     const [date, setDate] = useState(initialDate || '')
-    const [categoryId, setCategoryId] = useState(initialCategoryId || '')
-    const [typeId, setTypeId] = useState(initialTypeId || '')
+    const [categoryId, setCategoryId] = useState(initialCategoryId || 1)
+    const [typeId, setTypeId] = useState(initialTypeId || 1)
 
     //List of categories and types
     const [categories, setCategories] = useState([])
@@ -35,11 +35,21 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
             typeId
         }
 
-        console.log(transactionUpdated)
-
         if (initialConcept === undefined) {
+            Swal.fire({
+                icon: 'success',
+                title: 'The transaction has been created successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
             handleCreateTransaction(transactionUpdated)
         } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'The transaction has been updated successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
             handleUpdateTransaction(id, transactionUpdated)
         }
         onClose()

@@ -4,7 +4,7 @@ import {ReactComponent as ExpensesIcon} from '../../assets/icons/expense.svg'
 
 import './index.css'
 
-const Card = ({ income }) => {
+const Card = ({ income, amount}) => {
     return (
         <div className='card'>
             <h3 className='card-title'>
@@ -15,7 +15,7 @@ const Card = ({ income }) => {
             <div className='card-content'>
                 <div className={`card-info-container ${income ? 'income' : 'expense'}`}>
                     <p>Amount</p>
-                    <h2>$25.000</h2>
+                    <h2>${amount}</h2>
                 </div>
                 <div className='card-icon-container'>
                     <div className='circle'>

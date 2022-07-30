@@ -11,8 +11,9 @@ import getTransactionsByType from '../../services/transaction/getTransactionsByT
 import getTransactionsByCategory from '../../services/transaction/getTransactionsByCategory'
 import createTransaction from '../../services/transaction/createTransaction'
 import updateTransaction from '../../services/transaction/updateTransaction'
+import deleteTransaction from '../../services/transaction/deleteTransaction'
 
-const TransactionsPage = () => {
+const TransactionsPage = ({handleGetAllTransactions}) => {
 
     const [transactions, setTransactions] = useState([])
     const [categories, setCategories] = useState([])
@@ -28,7 +29,8 @@ const TransactionsPage = () => {
                 handleGetTransactionsByType(id)
             }
         }
-    },[])
+        handleGetAllTransactions()
+    },[handleGetAllTransactions])
     
     const handleGetTransactionsByType = (id) => {
         getTransactionsByType(id).then(data => setTransactions(data))
@@ -56,6 +58,10 @@ const TransactionsPage = () => {
 
     const handleUpdateTransaction = (id, transaction) => {
         updateTransaction(id, {transaction}).then(res => handleGetTransactions())
+    }
+
+    const handleDeleteTransaction = (id) => {
+        deleteTransaction(id).then(res => handleGetTransactions())
     }
 
     useEffect(() => {
@@ -93,6 +99,7 @@ const TransactionsPage = () => {
                                 categoryId={transaction.categoryId}
                                 typeId={transaction.typeId}
                                 handleUpdateTransaction={handleUpdateTransaction}
+                                handleDeleteTransaction={handleDeleteTransaction}
                             > </Transaction>
                         )
                     })
