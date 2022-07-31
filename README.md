@@ -20,6 +20,8 @@ For the **frontend** of the website I used the following technologies:
 * **Recharts** to create some of the charts to show the information
 * **Sweetalert2** to show some messages in certain actions
 * Also an extern cdn for the humburger menu effect
+
+
 In the case of **backend** I sed the following technologies:
 * **Cors** to allow frontend connect to the API in the backend.
 * **Dotenv** to allow files to access .env variables
