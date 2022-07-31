@@ -75,8 +75,8 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
                         <input className='input-concept'
                             type='text'
                             value={concept}
-                            required
-                            onChange={e => setConcept(e.target.value)}>
+                            onChange={e => setConcept(e.target.value)}
+                            required>
                         </input>
                     </label>
                 </div>
@@ -88,17 +88,17 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
                         className='input-number'
                         type='number'
                         value={amount}
-                        required    
-                        onChange={e => setAmount(e.target.value)}>
+                        onChange={e => setAmount(e.target.value)}
+                        required >
                     </input></label>
                 </div>
                 <div className='transaction-update-col'>
                     <label>Date: <br></br><input
                         className='input-date'
                         type='date'
-                        value={date}
-                        required    
-                        onChange={e => setDate(e.target.value)}>
+                        value={date}   
+                        onChange={e => setDate(e.target.value)}
+                        required >
                     </input></label>
                 </div>
             </div>
