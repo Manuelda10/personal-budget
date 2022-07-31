@@ -80,8 +80,19 @@
     opacity: 1;
 }
 
+.credits-container{
+    position: absolute;
+    bottom: 0.1rem;
+    left: 10%;
+    right: 10%;
+}
 
-
+.credits{
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
 
 
 @media screen and (max-width: 830px) {
