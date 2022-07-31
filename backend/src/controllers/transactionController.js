@@ -3,7 +3,9 @@ const { Transaction } = require("../models/association")
 //GET
 const getAllTransactions = async (req, res) => {
     try {
-        const transactions = await Transaction.findAll({})
+        const transactions = await Transaction.findAll({
+            order: [["id", "DESC"]]
+        })
         res.json(transactions)
     } catch (err) {
         res.status(500).send({

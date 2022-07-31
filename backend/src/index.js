@@ -4,7 +4,11 @@ const cors = require('cors')
 const app = express()
 
 const db = require('./database/db')
-db.sequelize.sync({})
+const createInitialData = require('./database/createInitialData') //Only to show initial data
+
+db.sequelize.sync({force: true}).then(() => {
+    createInitialData()
+})
 
 //Import the routes
 const categoriesRouter = require('./routes/categoryRoutes')

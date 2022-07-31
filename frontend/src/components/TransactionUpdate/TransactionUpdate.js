@@ -26,7 +26,8 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
     }
 
     // Save the information of the transaction
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         const transactionUpdated = {
             concept,
             amount,
@@ -36,21 +37,21 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
         }
 
         if (initialConcept === undefined) {
+            handleCreateTransaction(transactionUpdated)
             Swal.fire({
                 icon: 'success',
                 title: 'The transaction has been created successfully',
                 showConfirmButton: false,
                 timer: 1500
             })
-            handleCreateTransaction(transactionUpdated)
         } else {
+            handleUpdateTransaction(id, transactionUpdated)
             Swal.fire({
                 icon: 'success',
                 title: 'The transaction has been updated successfully',
                 showConfirmButton: false,
                 timer: 1500
             })
-            handleUpdateTransaction(id, transactionUpdated)
         }
         onClose()
     }
@@ -67,12 +68,14 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
                     'Transaction Create'
                     : 'Transaction Update'
             }</h2>
-            <div className='transaction-update-row'>
+            <form onSubmit={handleSubmit}>
+                <div className='transaction-update-row'>
                 <div className='concept-container'>
                     <label>Concept of payment: <br></br>
                         <input className='input-concept'
                             type='text'
                             value={concept}
+                            required
                             onChange={e => setConcept(e.target.value)}>
                         </input>
                     </label>
@@ -85,6 +88,7 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
                         className='input-number'
                         type='number'
                         value={amount}
+                        required    
                         onChange={e => setAmount(e.target.value)}>
                     </input></label>
                 </div>
@@ -93,6 +97,7 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
                         className='input-date'
                         type='date'
                         value={date}
+                        required    
                         onChange={e => setDate(e.target.value)}>
                     </input></label>
                 </div>
@@ -137,10 +142,10 @@ const TransactionUpdate = ({id, initialConcept, initialAmount, initialDate, init
                     </select>
                 </div>
             </div>
-            
-            
-            <button onClick={handleSubmit} className='save-btn'>Save</button>
+                <button onSubmit={handleSubmit} className='save-btn'>Save</button>
+            </form>
             <button onClick={onClose} className='close-btn'><CloseIcon className='close-icon'></CloseIcon></button>
+            
         </div>
     )
 }

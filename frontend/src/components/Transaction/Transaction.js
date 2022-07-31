@@ -28,7 +28,7 @@ const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleUpda
     const handleDelete = () => {
         Swal.fire({
             title: 'Are you sure?',
-            text: `You won't be able to revert the transaction '${concept}'`,
+            text: `You won't be able to retrieve the transaction '${concept}'`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -39,7 +39,7 @@ const Transaction = ({ id, concept, amount, date, categoryId, typeId, handleUpda
                 handleDeleteTransaction(id)
                 Swal.fire(
                     'Deleted!',
-                    'Your file has been deleted.',
+                    'The transaction has been deleted.',
                     'success'
                 )
             } 
