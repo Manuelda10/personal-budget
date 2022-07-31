@@ -22,7 +22,7 @@ For the **frontend** of the website I used the following technologies:
 * Also an extern cdn for the humburger menu effect
 
 
-In the case of **backend** I sed the following technologies:
+In the case of **backend** I used the following technologies:
 * **Cors** to allow frontend connect to the API in the backend.
 * **Dotenv** to allow files to access .env variables
 * **Node.js** as the principal platform.
