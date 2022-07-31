@@ -21,6 +21,9 @@ const Sidebar = ({ transactions }) => {
     return (<div className='sidebar menu' >
         <Balance total={total}></Balance>
         <Navigator></Navigator>
+        <div className='credits-container'>
+            <p className='credits'>Developed by Manuel Vallejos</p>
+        </div>
     </div>)
 }
 
