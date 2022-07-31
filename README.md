@@ -15,7 +15,7 @@ npm start
 ```
 ## Details about the project
 For the **frontend** of the website I used the following technologies:
-* **React.js** as a principal library.
+* **React.js** as the principal library.
 * **React Router Dom v6** to manage the routes in the website.
 * **Recharts** to create some of the charts to show the information
 * **Sweetalert2** to show some messages in certain actions
